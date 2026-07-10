@@ -531,33 +531,30 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
     position: fixed;
     inset: 0;
     z-index: 9999;
-
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-
     background: rgba(58,35,64,.92);
-
-    opacity: 0;
-    visibility: hidden;
-    transition: .3s;
 }
 
 .lightbox.active{
-    opacity:1;
-    visibility:visible;
+    display: flex;
 }
+
 #lightbox-media{
     display:flex;
     justify-content:center;
     align-items:center;
-
-    width:100%;
-    height:100%;
-
-    margin:0;
-    padding:20px;
+    width:100vw;
+    height:100vh;
 }
+
+#lightbox-media img,
+#lightbox-media video{
+    max-width:90%;
+    max-height:90%;
+    object-fit:contain;
+    display:block;
 }
 
 #lightbox-media img,
