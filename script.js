@@ -235,8 +235,9 @@ const galleryMedia = galleryItemEls.map(item => {
 });
 
 function renderLightboxMedia(index){
-  const data = galleryMedia[index];
-  lightboxMedia.innerHTML = '';
+ const img = document.createElement("img");
+img.src = data.src;
+lightboxMedia.appendChild(img);
 
   if (data.type === 'video'){
     const video = document.createElement('video');
