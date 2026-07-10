@@ -574,10 +574,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 
 #lightbox-media img,
 #lightbox-media video{
-    display:block;
-    max-width:90%;
-    max-height:90%;
-    object-fit:contain;
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    top: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    right: auto !important;
 }
 
 .lightbox-close{
