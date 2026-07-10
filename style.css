@@ -574,9 +574,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 
 #lightbox-media img,
 #lightbox-media video{
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
+  max-width:88vw;
+  max-height:82vh;
+  border-radius:14px;
+  box-shadow:0 30px 70px rgba(0,0,0,.5);
+  transform:scale(.92);
+  transition:transform .4s ease;
 }
 .lightbox-close{
     position:absolute;
