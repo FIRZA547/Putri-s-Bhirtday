@@ -541,52 +541,60 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
     display: flex;
 }
 
+/* ================= LIGHTBOX ================= */
+
+.lightbox{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(58,35,64,.92);
+}
+
+.lightbox.active{
+    display: flex;
+}
+
 #lightbox-media{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:100vw;
-    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 #lightbox-media img,
 #lightbox-media video{
-    max-width:90%;
-    max-height:90%;
-    object-fit:contain;
-    display:block;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: auto;
 }
 
-#lightbox-media img,
-#lightbox-media video{
-    max-width:90vw;
-    max-height:85vh;
-    width:auto;
-    height:auto;
-    object-fit:contain;
-
-    transform:none;
-}
 .lightbox-close{
-  position:absolute;top:1.5rem;right:1.8rem;
-  font-size:2.2rem;color:var(--gold-light);
-  line-height:1;
-  transition:transform .3s ease, color .3s ease;
+    position:absolute;
+    top:20px;
+    right:20px;
 }
-.lightbox-close:hover{transform:rotate(90deg);color:#fff;}
-.lightbox-nav{
-  position:absolute;
-  top:50%;transform:translateY(-50%);
-  font-size:1.6rem;
-  color:var(--gold-light);
-  padding:.6rem .9rem;
-  border-radius:50%;
-  transition:background .3s ease, color .3s ease;
-}
-.lightbox-nav:hover{background:rgba(255,255,255,.12);color:#fff;}
-.lightbox-prev{left:1rem;}
-.lightbox-next{right:1rem;}
 
+.lightbox-prev{
+    position:absolute;
+    left:20px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.lightbox-next{
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+}
 /* =========================================================
    PESAN ULANG TAHUN
 ========================================================= */
