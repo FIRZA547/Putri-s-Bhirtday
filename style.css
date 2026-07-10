@@ -579,7 +579,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
     object-fit: contain;
     margin: auto;
 
-   transform: translateY(-120px);
+  
 }
 
 .lightbox-close{
