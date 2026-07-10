@@ -254,40 +254,46 @@ function renderLightboxMedia(index){
   }
 }
 
-function renderLightboxMedia(index){
-    const data = galleryMedia[index];
-    lightboxMedia.innerHTML = "";
-
-    if(data.type === "video"){
-        const video = document.createElement("video");
-        video.src = data.src;
-        video.controls = true;
-        video.autoplay = true;
-        video.muted = true;
-        video.playsInline = true;
-
-        video.style.maxWidth = "90vw";
-        video.style.maxHeight = "85vh";
-        video.style.objectFit = "contain";
-        video.style.display = "block";
-        video.style.margin = "auto";
-
-        lightboxMedia.appendChild(video);
-
-    }else{
-
-        const img = document.createElement("img");
-        img.src = data.src;
-
-        img.style.maxWidth = "90vw";
-        img.style.maxHeight = "85vh";
-        img.style.objectFit = "contain";
-        img.style.display = "block";
-        img.style.margin = "auto";
-
-        lightboxMedia.appendChild(img);
-    }
+function openLightbox(index){
+  currentImageIndex = index;
+  renderLightboxMedia(index);
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
+
+function stopLightboxVideo(){
+  const playingVideo = lightboxMedia.querySelector('video');
+  if (playingVideo) playingVideo.pause();
+}
+
+function closeLightbox(){
+  stopLightboxVideo();
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function showNextImage(delta){
+  stopLightboxVideo();
+  currentImageIndex = (currentImageIndex + delta + galleryMedia.length) % galleryMedia.length;
+  renderLightboxMedia(currentImageIndex);
+}
+
+galleryItemEls.forEach((item, index) => {
+  item.addEventListener('click', () => openLightbox(index));
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxPrev.addEventListener('click', () => showNextImage(-1));
+lightboxNext.addEventListener('click', () => showNextImage(1));
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showNextImage(-1);
+  if (e.key === 'ArrowRight') showNextImage(1);
+});
 
 /* =========================================================
    7. MUSIK LATAR
